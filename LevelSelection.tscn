@@ -1,0 +1,169 @@
+[gd_scene load_steps=6 format=3 uid="uid://drbfvpjlelykt"]
+
+[ext_resource type="Script" path="res://Script/LevelSelection.cs" id="1_m7maf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 42
+font_color = Color(0.8, 0.9, 0.7, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_subtitle"]
+font_size = 18
+font_color = Color(0.7, 0.8, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_level_button"]
+bg_color = Color(0.2, 0.4, 0.2, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.6, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_back_button"]
+bg_color = Color(0.4, 0.2, 0.2, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.3, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="LevelSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m7maf")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.2, 0.15, 1)
+
+[node name="BackgroundPattern" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.25, 0.2, 0.3)
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -228.5
+offset_right = 300.0
+offset_bottom = 228.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleSection" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+
+[node name="LevelTitle" type="Label" parent="MainContainer/TitleSection"]
+layout_mode = 2
+text = "SELECT DIFFICULTY"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="LevelSubtitle" type="Label" parent="MainContainer/TitleSection"]
+layout_mode = 2
+text = "Choose your challenge level"
+label_settings = SubResource("LabelSettings_subtitle")
+horizontal_alignment = 1
+
+[node name="TitleSpacer" type="Control" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="LevelButtonsContainer" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TopRowContainer" type="HBoxContainer" parent="MainContainer/LevelButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Level1Button" type="Button" parent="MainContainer/LevelButtonsContainer/TopRowContainer"]
+custom_minimum_size = Vector2(280, 70)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_level_button")
+text = "EASY
+5 Enemies"
+
+[node name="Level2Button" type="Button" parent="MainContainer/LevelButtonsContainer/TopRowContainer"]
+custom_minimum_size = Vector2(280, 70)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_level_button")
+text = "NORMAL
+10 Enemies"
+
+[node name="MiddleRowContainer" type="HBoxContainer" parent="MainContainer/LevelButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Level3Button" type="Button" parent="MainContainer/LevelButtonsContainer/MiddleRowContainer"]
+custom_minimum_size = Vector2(280, 70)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_level_button")
+text = "HARD
+20 Enemies"
+
+[node name="Level4Button" type="Button" parent="MainContainer/LevelButtonsContainer/MiddleRowContainer"]
+custom_minimum_size = Vector2(280, 70)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_level_button")
+text = "EXPERT
+35 Enemies"
+
+[node name="BottomRowContainer" type="HBoxContainer" parent="MainContainer/LevelButtonsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Level5Button" type="Button" parent="MainContainer/LevelButtonsContainer/BottomRowContainer"]
+custom_minimum_size = Vector2(575, 70)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_level_button")
+text = "NIGHTMARE
+50 Enemies"
+
+[node name="BottomSpacer" type="Control" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="BackButtonContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" type="Button" parent="MainContainer/BackButtonContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_back_button")
+text = "BACK TO MENU"
+
+[connection signal="pressed" from="MainContainer/LevelButtonsContainer/TopRowContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="MainContainer/LevelButtonsContainer/TopRowContainer/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="MainContainer/LevelButtonsContainer/MiddleRowContainer/Level3Button" to="." method="_on_level_3_button_pressed"]
+[connection signal="pressed" from="MainContainer/LevelButtonsContainer/MiddleRowContainer/Level4Button" to="." method="_on_level_4_button_pressed"]
+[connection signal="pressed" from="MainContainer/LevelButtonsContainer/BottomRowContainer/Level5Button" to="." method="_on_level_5_button_pressed"]
+[connection signal="pressed" from="MainContainer/BackButtonContainer/BackButton" to="." method="_on_back_button_pressed"]

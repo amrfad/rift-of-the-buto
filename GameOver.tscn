@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://2ere28ogr100"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_WinPanel"]
+bg_color = Color(0.2, 0.4, 0.2, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4, 0.6, 0.3, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_WinTitle"]
+font_size = 42
+font_color = Color(0.8, 0.9, 0.7, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Button"]
+bg_color = Color(0.2, 0.4, 0.2, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.6, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinPanel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(400, 380)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_WinPanel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/WinPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -20.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="WinLabel" type="Label" parent="CenterContainer/WinPanel/VBoxContainer"]
+layout_mode = 2
+text = "VICTORY!"
+label_settings = SubResource("LabelSettings_WinTitle")
+horizontal_alignment = 1
+
+[node name="KillsLabel" type="Label" parent="CenterContainer/WinPanel/VBoxContainer"]
+layout_mode = 2
+text = "The Rift has been sealed"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GoldLabel" type="Label" parent="CenterContainer/WinPanel/VBoxContainer"]
+layout_mode = 2
+text = "The Rift has been sealed"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonSpacer" type="Control" parent="CenterContainer/WinPanel/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="CenterContainer/WinPanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_Button")
+text = "MAIN MENU"
+
+[node name="UpgradeButton" type="Button" parent="CenterContainer/WinPanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_Button")
+text = "UPGRADE"
+
+[node name="RetryButton" type="Button" parent="CenterContainer/WinPanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_Button")
+text = "RETRY"

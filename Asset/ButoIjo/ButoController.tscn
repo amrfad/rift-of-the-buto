@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://0qp8xo2yxiyc"]
+
+[ext_resource type="Script" path="res://Script/ButoController.cs" id="1_2b4u0"]
+[ext_resource type="PackedScene" uid="uid://kmp0bai5ft6t" path="res://Asset/ButoIjo/buto_ijo.tscn" id="1_jtgt4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_omy84"]
+size = Vector3(4.33118, 1, 1.77287)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3a7k0"]
+height = 100.0
+radius = 65.0
+
+[node name="ButoIjo_Con" type="CharacterBody3D"]
+collision_layer = 32768
+script = ExtResource("1_2b4u0")
+
+[node name="Buto Ijo" parent="." instance=ExtResource("1_jtgt4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0372925, 0.469428, 0.555641)
+shape = SubResource("BoxShape3D_omy84")
+
+[node name="AreaDeteksi" type="Area3D" parent="."]
+collision_layer = 256
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaDeteksi"]
+shape = SubResource("CylinderShape3D_3a7k0")

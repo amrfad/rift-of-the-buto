@@ -1,0 +1,387 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdetol7eb6m1e"]
+
+[ext_resource type="Script" path="res://Script/UpgradeMenu.cs" id="1_jkyws"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 42
+font_color = Color(0.8, 0.9, 0.7, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_points"]
+font_size = 24
+font_color = Color(0.9, 0.95, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.15, 0.3, 0.2, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.5, 0.7, 0.4, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_upgrade"]
+font_size = 18
+font_color = Color(0.85, 0.9, 0.75, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.2, 0.4, 0.2, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.6, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="UpgradeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jkyws")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.2, 0.15, 1)
+
+[node name="BackgroundPattern" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.25, 0.2, 0.3)
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeaderContainer" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="UpgradeTitle" type="Label" parent="MainContainer/HeaderContainer"]
+layout_mode = 2
+text = "UPGRADE STATION"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="PointsContainer" type="HBoxContainer" parent="MainContainer/HeaderContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PointsLabel" type="Label" parent="MainContainer/HeaderContainer/PointsContainer"]
+layout_mode = 2
+text = "UPGRADE POINTS: "
+label_settings = SubResource("LabelSettings_points")
+
+[node name="PointsValue" type="Label" parent="MainContainer/HeaderContainer/PointsContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_points")
+
+[node name="HeaderSpacer" type="Control" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="UpgradeGrid" type="GridContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="GrapplingPanel" type="Panel" parent="MainContainer/UpgradeGrid"]
+custom_minimum_size = Vector2(350, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="GrapplingContainer" type="HBoxContainer" parent="MainContainer/UpgradeGrid/GrapplingPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="GrapplingIcon" type="ColorRect" parent="MainContainer/UpgradeGrid/GrapplingPanel/GrapplingContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.3, 0.5, 0.35, 0.6)
+
+[node name="GrapplingIconLabel" type="Label" parent="MainContainer/UpgradeGrid/GrapplingPanel/GrapplingContainer/GrapplingIcon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "🪝"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GrapplingInfo" type="VBoxContainer" parent="MainContainer/UpgradeGrid/GrapplingPanel/GrapplingContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="GrapplingTitle" type="Label" parent="MainContainer/UpgradeGrid/GrapplingPanel/GrapplingContainer/GrapplingInfo"]
+layout_mode = 2
+text = "GRAPPLING HOOK"
+label_settings = SubResource("LabelSettings_upgrade")
+
+[node name="GrapplingStats" type="Label" parent="MainContainer/UpgradeGrid/GrapplingPanel/GrapplingContainer/GrapplingInfo"]
+modulate = Color(0.7, 0.8, 0.6, 1)
+layout_mode = 2
+text = "Range: 10m | Speed: 15m/s"
+
+[node name="GrapplingLevel" type="Label" parent="MainContainer/UpgradeGrid/GrapplingPanel/GrapplingContainer/GrapplingInfo"]
+layout_mode = 2
+text = "Level: 1"
+
+[node name="GrapplingCost" type="Label" parent="MainContainer/UpgradeGrid/GrapplingPanel/GrapplingContainer/GrapplingInfo"]
+layout_mode = 2
+text = "Cost: 10 Points"
+
+[node name="GrapplingButton" type="Button" parent="MainContainer/UpgradeGrid/GrapplingPanel/GrapplingContainer/GrapplingInfo"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "UPGRADE"
+
+[node name="GolokPanel" type="Panel" parent="MainContainer/UpgradeGrid"]
+custom_minimum_size = Vector2(350, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="GolokContainer" type="HBoxContainer" parent="MainContainer/UpgradeGrid/GolokPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="GolokIcon" type="ColorRect" parent="MainContainer/UpgradeGrid/GolokPanel/GolokContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.3, 0.5, 0.35, 0.6)
+
+[node name="GolokIconLabel" type="Label" parent="MainContainer/UpgradeGrid/GolokPanel/GolokContainer/GolokIcon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "🔪"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GolokInfo" type="VBoxContainer" parent="MainContainer/UpgradeGrid/GolokPanel/GolokContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="GolokTitle" type="Label" parent="MainContainer/UpgradeGrid/GolokPanel/GolokContainer/GolokInfo"]
+layout_mode = 2
+text = "GOLOK"
+label_settings = SubResource("LabelSettings_upgrade")
+
+[node name="GolokStats" type="Label" parent="MainContainer/UpgradeGrid/GolokPanel/GolokContainer/GolokInfo"]
+modulate = Color(0.7, 0.8, 0.6, 1)
+layout_mode = 2
+text = "Damage: 25"
+
+[node name="GolokLevel" type="Label" parent="MainContainer/UpgradeGrid/GolokPanel/GolokContainer/GolokInfo"]
+layout_mode = 2
+text = "Level: 1"
+
+[node name="GolokCost" type="Label" parent="MainContainer/UpgradeGrid/GolokPanel/GolokContainer/GolokInfo"]
+layout_mode = 2
+text = "Cost: 15 Points"
+
+[node name="GolokButton" type="Button" parent="MainContainer/UpgradeGrid/GolokPanel/GolokContainer/GolokInfo"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "UPGRADE"
+
+[node name="KerisPanel" type="Panel" parent="MainContainer/UpgradeGrid"]
+custom_minimum_size = Vector2(350, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="KerisContainer" type="HBoxContainer" parent="MainContainer/UpgradeGrid/KerisPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="KerisIcon" type="ColorRect" parent="MainContainer/UpgradeGrid/KerisPanel/KerisContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.3, 0.5, 0.35, 0.6)
+
+[node name="KerisIconLabel" type="Label" parent="MainContainer/UpgradeGrid/KerisPanel/KerisContainer/KerisIcon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "🗡️"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KerisInfo" type="VBoxContainer" parent="MainContainer/UpgradeGrid/KerisPanel/KerisContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="KerisTitle" type="Label" parent="MainContainer/UpgradeGrid/KerisPanel/KerisContainer/KerisInfo"]
+layout_mode = 2
+text = "KERIS"
+label_settings = SubResource("LabelSettings_upgrade")
+
+[node name="KerisStats" type="Label" parent="MainContainer/UpgradeGrid/KerisPanel/KerisContainer/KerisInfo"]
+modulate = Color(0.7, 0.8, 0.6, 1)
+layout_mode = 2
+text = "Cooldown: 5.0s"
+
+[node name="KerisLevel" type="Label" parent="MainContainer/UpgradeGrid/KerisPanel/KerisContainer/KerisInfo"]
+layout_mode = 2
+text = "Level: 1"
+
+[node name="KerisCost" type="Label" parent="MainContainer/UpgradeGrid/KerisPanel/KerisContainer/KerisInfo"]
+layout_mode = 2
+text = "Cost: 12 Points"
+
+[node name="KerisButton" type="Button" parent="MainContainer/UpgradeGrid/KerisPanel/KerisContainer/KerisInfo"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "UPGRADE"
+
+[node name="HPPanel" type="Panel" parent="MainContainer/UpgradeGrid"]
+custom_minimum_size = Vector2(350, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="HPContainer" type="HBoxContainer" parent="MainContainer/UpgradeGrid/HPPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="HPIcon" type="ColorRect" parent="MainContainer/UpgradeGrid/HPPanel/HPContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.3, 0.5, 0.35, 0.6)
+
+[node name="HPIconLabel" type="Label" parent="MainContainer/UpgradeGrid/HPPanel/HPContainer/HPIcon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "❤️"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPInfo" type="VBoxContainer" parent="MainContainer/UpgradeGrid/HPPanel/HPContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="HPTitle" type="Label" parent="MainContainer/UpgradeGrid/HPPanel/HPContainer/HPInfo"]
+layout_mode = 2
+text = "HEALTH POINTS"
+label_settings = SubResource("LabelSettings_upgrade")
+
+[node name="HPStats" type="Label" parent="MainContainer/UpgradeGrid/HPPanel/HPContainer/HPInfo"]
+modulate = Color(0.7, 0.8, 0.6, 1)
+layout_mode = 2
+text = "Max HP: 100 | Regen: 1/s"
+
+[node name="HPLevel" type="Label" parent="MainContainer/UpgradeGrid/HPPanel/HPContainer/HPInfo"]
+layout_mode = 2
+text = "Level: 1"
+
+[node name="HPCost" type="Label" parent="MainContainer/UpgradeGrid/HPPanel/HPContainer/HPInfo"]
+layout_mode = 2
+text = "Cost: 20 Points"
+
+[node name="HPButton" type="Button" parent="MainContainer/UpgradeGrid/HPPanel/HPContainer/HPInfo"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "UPGRADE"
+
+[node name="FooterSpacer" type="Control" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MainContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "BACK TO MENU"
+
+[connection signal="pressed" from="MainContainer/UpgradeGrid/GrapplingPanel/GrapplingContainer/GrapplingInfo/GrapplingButton" to="." method="_on_grappling_upgrade_pressed"]
+[connection signal="pressed" from="MainContainer/UpgradeGrid/GolokPanel/GolokContainer/GolokInfo/GolokButton" to="." method="_on_golok_upgrade_pressed"]
+[connection signal="pressed" from="MainContainer/UpgradeGrid/KerisPanel/KerisContainer/KerisInfo/KerisButton" to="." method="_on_keris_upgrade_pressed"]
+[connection signal="pressed" from="MainContainer/UpgradeGrid/HPPanel/HPContainer/HPInfo/HPButton" to="." method="_on_hp_upgrade_pressed"]
+[connection signal="pressed" from="MainContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7jd07gxlj2c1"]
+
+[ext_resource type="Script" path="res://Script/Player.cs" id="1_nwyim"]
+[ext_resource type="Script" path="res://Script/CameraController.cs" id="2_ob1ie"]
+[ext_resource type="PackedScene" uid="uid://3dgql2xqfym" path="res://Asset/Player/Player.tscn" id="3_ty6ne"]
+[ext_resource type="Script" path="res://Script/HealthComponent.cs" id="4_c2reb"]
+
+[sub_resource type="Animation" id="Animation_i70dd"]
+resource_name = "Cut Scene"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.233333, 1, 0, 1, 0, 0, 0.733333, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_eyo15"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bytfb"]
+_data = {
+"Cut Scene": SubResource("Animation_i70dd"),
+"RESET": SubResource("Animation_eyo15")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wdw7r"]
+radius = 0.4
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 0.0966648, -0.009)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_nwyim")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.6, 2.1)
+script = ExtResource("2_ob1ie")
+CameraPivotPath = NodePath("..")
+PlayerPath = NodePath("../..")
+
+[node name="ModelNode" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.1, 0)
+
+[node name="PlayerObject" parent="ModelNode" instance=ExtResource("3_ty6ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0)
+
+[node name="CameraMovement" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bytfb")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_wdw7r")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_c2reb")
