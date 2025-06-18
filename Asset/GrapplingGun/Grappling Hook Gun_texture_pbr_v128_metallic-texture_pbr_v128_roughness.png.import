@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ddm28opxtd3sw"
+path.s3tc="res://.godot/imported/Grappling Hook Gun_texture_pbr_v128_metallic-texture_pbr_v128_roughness.png-cf25d6d2d938eccb80cfa22f65af8a78.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "610e5ab25b4cf99feb690bbe3f091932"
+}
+
+[deps]
+
+source_file="res://Asset/GrapplingGun/Grappling Hook Gun_texture_pbr_v128_metallic-texture_pbr_v128_roughness.png"
+dest_files=["res://.godot/imported/Grappling Hook Gun_texture_pbr_v128_metallic-texture_pbr_v128_roughness.png-cf25d6d2d938eccb80cfa22f65af8a78.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
